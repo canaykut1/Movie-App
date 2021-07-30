@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MovieService } from "../../api/service";
-import MovieCard from "../../shared/MovieCard/MovieCard";
+import Category from "../../shared/Category/Category";
 
 const Main = (props) => {
   const [isApiCalled, setIsApiCalled] = useState(false);
@@ -18,7 +18,7 @@ const Main = (props) => {
 
     Promise.all([popularMoviesPromise, popularSeriesPromise, documentriesPromise, familyMoviesPromise])
       .then((res) => {
-          console.log(res);
+        console.log(res);
         setPopularMovies(res[0]);
         setPopularSeries(res[1]);
         setDocumentries(res[2]);
@@ -31,10 +31,12 @@ const Main = (props) => {
       });
   }, []);
 
-
   return (
     <div className="name-component">
-     {familyMovies?.length > 0 && <MovieCard posterPath={familyMovies[0]?.poster_path} title={familyMovies[0]?.title} />}
+      {popularMovies?.length > 0 && <Category movies={popularMovies} header="Popular Movies" />}
+      {popularSeries?.length > 0 && <Category movies={popularSeries} header="Popular Series" />}
+      {documentries?.length > 0 && <Category movies={documentries} header="Documentries" />}
+      {familyMovies?.length > 0 && <Category movies={familyMovies} header="Family Movies" />}
     </div>
   );
 };
