@@ -8,6 +8,7 @@ import {
   Route,
 } from "react-router-dom";
 import Header from './Header/Header';
+import Details from './pages/Details/Details';
 
 function App() {
   
@@ -21,6 +22,9 @@ function App() {
         </Route>
         <Route path="/search">
           <Search />
+        </Route>
+        <Route path="/details">
+          <Details />
         </Route>
         <Route path="/">
           <Main />
