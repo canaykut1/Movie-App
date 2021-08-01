@@ -1,6 +1,10 @@
 .search-component {
-
   margin: 16px;
+  .MuiCircularProgress-colorPrimary {
+    margin-top: 30vh;
+    margin-left: 50vw;
+    color: #2e2a23;
+  }
   .search-bar {
     margin: 36px 0;
     display: flex;

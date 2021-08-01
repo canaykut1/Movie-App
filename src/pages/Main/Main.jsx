@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { MovieService } from "../../api/service";
 import Category from "../../shared/Category/Category";
+import { Snackbar, CircularProgress } from "@material-ui/core";
+import "./Main.scss";
 
 const Main = (props) => {
   const [isApiCalled, setIsApiCalled] = useState(false);
@@ -8,6 +10,7 @@ const Main = (props) => {
   const [popularSeries, setPopularSeries] = useState([]);
   const [documentries, setDocumentries] = useState([]);
   const [familyMovies, setFamilyMovies] = useState([]);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   useEffect(() => {
     const movieService = new MovieService();
@@ -26,16 +29,28 @@ const Main = (props) => {
       })
       .catch((_) => {
         setIsApiCalled(true);
-        //TODO ADD SNACK BAR
+        setSnackbarOpen(true);
       });
   }, []);
 
   return (
     <div className="main-component">
-      {popularMovies?.length > 0 && <Category movies={popularMovies} header="Popular Movies" />}
-      {popularSeries?.length > 0 && <Category movies={popularSeries} header="Popular Series" />}
-      {documentries?.length > 0 && <Category movies={documentries} header="Documentries" />}
-      {familyMovies?.length > 0 && <Category movies={familyMovies} header="Family Movies" />}
+      {isApiCalled ? (
+        <>
+          {popularMovies?.length > 0 && <Category movies={popularMovies} header="Popular Movies" />}
+          {popularSeries?.length > 0 && <Category movies={popularSeries} header="Popular Series" />}
+          {documentries?.length > 0 && <Category movies={documentries} header="Documentries" />}
+          {familyMovies?.length > 0 && <Category movies={familyMovies} header="Family Movies" />}
+        </>
+      ) : (
+        <CircularProgress />
+      )}
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        open={snackbarOpen}
+        onClose={() => setSnackbarOpen(false)}
+        message={"Sorry, something went wrong!"}
+      />
     </div>
   );
 };
