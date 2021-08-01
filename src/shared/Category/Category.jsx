@@ -19,7 +19,7 @@ const Category = ({ header, movies }) => {
       <h2>{header}</h2>
       <Slider {...settings}>
         {movies.map((m,i) => (
-          <MovieCard title={m.title ? m.title : m.name} posterPath={m.poster_path} key={i} />
+          <MovieCard movie={m} key={i} />
         ))}
       </Slider>
     </div>

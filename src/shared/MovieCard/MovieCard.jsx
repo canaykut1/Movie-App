@@ -1,12 +1,21 @@
 import * as React from "react";
 import "./MovieCard.scss";
+import { Link } from "react-router-dom";
 
-const MovieCard = ({ posterPath, title }) => {
-  const fullPath = `http://image.tmdb.org/t/p/w342${posterPath}`;
+const MovieCard = ({ movie }) => {
+  const { poster_path, title, name } = movie;  
+  const fullPath = `http://image.tmdb.org/t/p/w342${poster_path}`;
   return (
     <div className="movie-card-component">
-      <img src={fullPath} alt="poster" width="160" />
-      <div className="movie-name">{title}</div>
+      <Link
+        to={{
+          pathname: "/details",
+          state: { movie },
+        }}
+      >
+        <img src={fullPath} alt="poster" width="160" />
+        <div className="movie-name">{title ? title : name}</div>
+      </Link>
     </div>
   );
 };

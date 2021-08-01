@@ -1,0 +1,11 @@
+.watch-component {
+  padding: 16px;
+  h3 {
+    margin-left: 24px;
+
+    z-index: 1;
+  }
+  .shaka-video-container {
+    height: calc(100vh - 155px);
+  }
+}
