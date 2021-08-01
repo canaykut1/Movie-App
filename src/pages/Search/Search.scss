@@ -1,0 +1,21 @@
+.search-component {
+
+  margin: 16px;
+  .search-bar {
+    margin: 36px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .MuiButton-contained {
+      color: #ffffff;
+      background-color: #2e2a23;
+    }
+
+    .MuiFormControl-root {
+      width: 40vw;
+      min-width: 200px;
+      margin-right: 16px;
+    }
+  }
+}

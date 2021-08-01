@@ -18,7 +18,6 @@ const Main = (props) => {
 
     Promise.all([popularMoviesPromise, popularSeriesPromise, documentriesPromise, familyMoviesPromise])
       .then((res) => {
-        console.log(res);
         setPopularMovies(res[0]);
         setPopularSeries(res[1]);
         setDocumentries(res[2]);
@@ -32,7 +31,7 @@ const Main = (props) => {
   }, []);
 
   return (
-    <div className="name-component">
+    <div className="main-component">
       {popularMovies?.length > 0 && <Category movies={popularMovies} header="Popular Movies" />}
       {popularSeries?.length > 0 && <Category movies={popularSeries} header="Popular Series" />}
       {documentries?.length > 0 && <Category movies={documentries} header="Documentries" />}

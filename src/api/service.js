@@ -48,4 +48,15 @@ export class MovieService {
       throw err;
     });
   }
+  getSearchedMovies(query) {
+    return axios
+    .get(`${endpoint}/search/movie?api_key=${key}&query=${query}`)
+    .then((response) => {
+      return response.data.results;
+    })
+    .catch((err) => {
+      console.error(err.message);
+      throw err;
+    });
+  }
 }
