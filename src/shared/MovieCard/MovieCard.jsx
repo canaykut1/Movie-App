@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./MovieCard.scss";
 import { Link } from "react-router-dom";
+import defaultPoster from "../../assets/img/default-poster.png"
 
 const MovieCard = ({ movie }) => {
   const { poster_path, title, name } = movie;  
@@ -13,7 +14,7 @@ const MovieCard = ({ movie }) => {
           state: { movie },
         }}
       >
-        <img src={fullPath} alt="poster" width="160" />
+        <img src={poster_path ? fullPath : defaultPoster} alt="poster" width="160" />
         <div className="movie-name">{title ? title : name}</div>
       </Link>
     </div>

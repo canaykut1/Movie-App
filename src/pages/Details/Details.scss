@@ -1,13 +1,14 @@
 .details-component {
   margin: 16px;
-  padding: 8px 16px;
+  padding: 8px 16px 16px;
   background-color: #f6e6cb;
   display: flex;
   justify-content: space-between;
   .poster {
-    margin: 16px;
+    margin: 16px auto;
   }
   .info {
+    margin-right: 16px;
     .MuiButton-contained {
       margin-top: 32px;
       min-width: 160px;

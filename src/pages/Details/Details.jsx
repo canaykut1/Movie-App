@@ -1,15 +1,26 @@
-import * as React from "react";
+import React from "react";
 import "./Details.scss";
-import { Button } from "@material-ui/core";
+import { Button, useMediaQuery, useTheme, makeStyles } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 const Details = (props) => {
+  const curTheme = useTheme();
+
+  const isMobile = useMediaQuery(curTheme.breakpoints.down("xs"));
+  console.log(isMobile);
+  const useStyles = makeStyles((theme) => ({
+    detailsComponent: {
+      [theme.breakpoints.down("xs")]: { flexWrap: "wrap-reverse" },
+    },
+  }));
+  const classes = useStyles();
+
   const { title, name, poster_path, overview, release_date, original_language, vote_count, vote_average } =
     props?.location?.state?.movie;
   const fullPath = `http://image.tmdb.org/t/p/w342${poster_path}`;
 
   return (
-    <div className="details-component">
+    <div className={`details-component ${classes.detailsComponent}`}>
       <div className="info">
         <h1>{title ? title : name}</h1>
         <p>{overview}</p>
@@ -40,9 +51,11 @@ const Details = (props) => {
           </Link>
         </Button>
       </div>
-      <div className="poster">
-        <img src={fullPath} alt="poster" />
-      </div>
+      {poster_path && (
+        <div className="poster">
+          <img src={fullPath} alt="poster" width={isMobile && 160} />
+        </div>
+      )}
     </div>
   );
 };
