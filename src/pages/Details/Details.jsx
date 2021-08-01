@@ -53,7 +53,7 @@ const Details = (props) => {
       </div>
       {poster_path && (
         <div className="poster">
-          <img src={fullPath} alt="poster" width={isMobile && 160} />
+          <img src={fullPath} alt="poster" width={isMobile ? 160 : undefined} />
         </div>
       )}
     </div>
