@@ -7,7 +7,6 @@ const Details = (props) => {
   const curTheme = useTheme();
 
   const isMobile = useMediaQuery(curTheme.breakpoints.down("xs"));
-  console.log(isMobile);
   const useStyles = makeStyles((theme) => ({
     detailsComponent: {
       [theme.breakpoints.down("xs")]: { flexWrap: "wrap-reverse" },
