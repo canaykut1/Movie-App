@@ -6,7 +6,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Header/Header";
 import Details from "./pages/Details/Details";
 
-function App() {
+const  App = (props) =>{
+  // app uses React router dom
   return (
     <Router>
       <div>

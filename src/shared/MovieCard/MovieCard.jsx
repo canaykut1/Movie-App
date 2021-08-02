@@ -9,25 +9,22 @@ const MovieCard = ({ movie }) => {
   const [isPointMoved, setIsPointMoved] = useState(false);
 
   const history = useHistory();
+ 
+  //I wanted to use react router state to pass movie title, Alternatively it would be done by redux
   const goDetails = (e) => {
     history.push({
       pathname: "/details",
       state: { movie },
     });
   };
-
+  //I have a lot of events on div because of a bug
+  //BUG: When try to drag the slider it was firing the onClick event and go to Details page, to avoid this I had to add these all onPointerUp, onPointerMove, onPointerDown
   return (
     <div
       className="movie-card-component"
-      onClick={(e) => {
-        e.preventDefault();
-      }}
-      onPointerDown={() => {
-        setIsPointMoved(false);
-      }}
-      onPointerMove={() => {
-        setIsPointMoved(true);
-      }}
+      onClick={(e) => e.preventDefault()}
+      onPointerDown={() => setIsPointMoved(false)}
+      onPointerMove={() => setIsPointMoved(true)}
       onPointerUp={() => {
         if (isPointMoved) {
           setIsPointMoved(true);

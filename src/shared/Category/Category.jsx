@@ -7,6 +7,8 @@ import "./Category.scss";
 
 const Category = ({ header, movies }) => {
   const totalMovies = movies.length;
+
+  // That settings looks quite long with a lot of breakpoints, but I wanted to cover cases for all devices
   const settings = {
     autoplay: true,
     autoplaySpeed: 8000,

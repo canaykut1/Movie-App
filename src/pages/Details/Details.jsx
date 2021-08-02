@@ -1,12 +1,16 @@
 import React from "react";
 import "./Details.scss";
 import { Button, useMediaQuery, useTheme, makeStyles } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Details = (props) => {
-  const curTheme = useTheme();
+  //This condition created to redirect users the main page to handle error which will occur is directly going to /watch page via URL
+  const history = useHistory();
+  if (!props.location.state) history.push("/");
 
+  const curTheme = useTheme();
   const isMobile = useMediaQuery(curTheme.breakpoints.down("xs"));
+  //Responsive desing for mobile
   const useStyles = makeStyles((theme) => ({
     detailsComponent: {
       [theme.breakpoints.down("xs")]: { flexWrap: "wrap-reverse" },
@@ -15,7 +19,7 @@ const Details = (props) => {
   const classes = useStyles();
 
   const { title, name, poster_path, overview, release_date, original_language, vote_count, vote_average } =
-    props?.location?.state?.movie;
+    props?.location?.state?.movie || {};
   const fullPath = `http://image.tmdb.org/t/p/w342${poster_path}`;
 
   return (

@@ -22,11 +22,13 @@ const Search = (props) => {
         setSearchedMovies(res);
         setShowLoading(false);
         if (res.length === 0) {
+          //Notify the user if can not find any movie
           setSnackbarMessage(`Sorry, could not find any movie for ${input}`);
           setSnackbarOpen(true);
         }
       })
       .catch((_) => {
+        //Notify the user if api will not work successfully
         setShowLoading(false);
         setSnackbarMessage("Sorry, something went wrong!");
       });

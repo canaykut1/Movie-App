@@ -5,6 +5,7 @@ import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 const Header = (props) => {
+  //MUI type of styling
   const useStyles = makeStyles((theme) =>
     createStyles({
       root: {

@@ -18,6 +18,8 @@ const Main = (props) => {
     const popularSeriesPromise = movieService.getPopularSeries();
     const documentriesPromise = movieService.getDocumentries();
     const familyMoviesPromise = movieService.getFamilyMovies();
+    
+    //Alternatively, It would be done single by single for each category and add loading spinner to each category
 
     Promise.all([popularMoviesPromise, popularSeriesPromise, documentriesPromise, familyMoviesPromise])
       .then((res) => {
@@ -28,10 +30,12 @@ const Main = (props) => {
         setIsApiCalled(true);
       })
       .catch((_) => {
+        //Notify the user if api will not work successfully 
         setIsApiCalled(true);
         setSnackbarOpen(true);
       });
   }, []);
+  
 
   return (
     <div className="main-component">
